@@ -1,5 +1,4 @@
 from dotenv import load_dotenv
-load_dotenv()
 import argparse
 import requests
 import os
@@ -22,13 +21,14 @@ def count_clicks(token, url_for_count):
     return clicks_count
 
 def main():
+    load_dotenv()
     token = os.getenv("APIKEY")
     parser = argparse.ArgumentParser(description='You can make a short link and count clicks')
     parser.add_argument('-l', '--link', help='Your link')
-    your_link = parser.parse_args()
+    user_link = parser.parse_args()
 
-    if your_link.link:
-      user_input = your_link.link
+    if user_link.link:
+      user_input = user_link.link
     else:
       user_input = input('Введите ссылку:')
 
